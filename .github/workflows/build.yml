@@ -2,7 +2,7 @@ name: build
 on: [push]
 
 env:
-  VERSION_PREFIX: "0.7.0"
+  VERSION_PREFIX: "0.8.0"
 
 jobs:
     build:
@@ -20,6 +20,7 @@ jobs:
                   5.0.x
                   6.0.x
                   8.0.x
+                  10.0.x
 
           - name: Restore
             run: dotnet restore
@@ -43,7 +44,7 @@ jobs:
             run: mkdir dist/ && cp src/DotnetCIVersionProperties/bin/Release/*.nupkg dist/
 
           - name: Archive dist/
-            uses: actions/upload-artifact@v1
+            uses: Brightspace/third-party-actions@actions/upload-artifact
             with:
                 name: dist
                 path: dist/
